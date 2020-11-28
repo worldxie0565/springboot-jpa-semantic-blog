@@ -6,6 +6,7 @@
     <title>博客列表</title>
     <link rel="stylesheet" href="../../static/css/me.css">
     <link href="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.css">
 </head>
 <body>
 <!--导航-->
@@ -63,7 +64,9 @@
                 </div>
             </div>
             <div class="field">
-                <textarea name="content" placeholder="请输入博客内容"></textarea>
+                <div id="md-content" style="z-index: 1 !important;">
+                    <textarea name="content" style="display: none" placeholder="博客内容"></textarea>
+                </div>
             </div>
             <div class="two fields">
                 <div class="field">
@@ -170,8 +173,21 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
+<script src="../../static/lib/editormd/editormd.min.js"></script>
 
 <script>
+
+    var testEditor;
+
+    $(function() {
+        testEditor = editormd("md-content", {
+            width   : "100%",
+            height  : 640,
+            syncScrolling : "single",
+            path    : "../../static/lib/editormd/lib/"
+        });
+    });
+
     $('.menu.toggle').click(function () {
         $('.m-item').toggleClass('m-mobile-hide');
     })
