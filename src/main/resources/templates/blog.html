@@ -36,7 +36,7 @@
     </a>
 </nav>
 <!--中间内容-->
-<div class="m-padded-tb-big m-container-small animated fadeIn">
+<div id="waypoint" class="m-padded-tb-big m-container-small animated fadeIn">
     <div class="ui container">
         <div class="ui top attached segment">
             <div class="ui horizontal link list">
@@ -616,7 +616,7 @@ h5,h6{font-size:1em;}
     </div>
 </div>
 </div>
-<div class="m-padded  m-fixed m-right-bottom">
+<div id="toolbar" class="m-padded  m-fixed m-right-bottom" style="display: none">
     <div class="ui vertical icon buttons">
         <button type="button" class="ui toc teal button">目录</button>
         <a href="#comment-container" class="ui teal button">留言</a>
@@ -670,6 +670,7 @@ h5,h6{font-size:1em;}
 <script src="../static/lib/prism/prism.js"></script>
 <script src="../static/lib/tocbot/tocbot.min.js"></script>
 <script src="../static/lib/qrcode/qrcode.min.js"></script>
+<script src="../static/lib/waypoints/jquery.waypoints.min.js"></script>
 
 <script>
 
@@ -713,6 +714,16 @@ h5,h6{font-size:1em;}
     });
     $("#toTop-button").click(function () {
         $(window).scrollTo(0, 500);
+    })
+    var waypoint = new Waypoint({
+        element: document.getElementById('waypoint'),
+        handler: function(direction) {
+            if(direction == 'down') {
+                $("#toolbar").show(100)
+            } else {
+                $("#toolbar").hide(100)
+            }
+        }
     })
 </script>
 </body>
