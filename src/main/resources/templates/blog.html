@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../static/css/typo.css">
     <link rel="stylesheet" href="../static/css/animate.css">
     <link rel="stylesheet" href="../static/lib/prism/prism.css">
+    <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css">
     <link href="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.css" rel="stylesheet">
 </head>
 <body style="background: url('../static/images/bg.png')">
@@ -62,9 +63,7 @@
                 <div class="ui orange basic label">原创</div>
             </div>
             <h2 class="ui centered header">锄禾日当午</h2>
-            <div id="content" class=" typo typo-selection m-padded-lr-huge m-padded-tb m-mobile-lr-clear">
-                <pre><code class="language-css">p { color: red }</code></pre>
-                <pre><code class="language-css">p { color: red }</code></pre>
+            <div id="content" class=" js-toc-content typo typo-selection m-padded-lr-huge m-padded-tb m-mobile-lr-clear">
                 <ol id="table">
                     <li><a href="#section1">关于 <i class="serif">Typo.css</i></a></li>
                     <li><a href="#section2">排版实例</a>
@@ -515,7 +514,7 @@ h5,h6{font-size:1em;}
             </div>
         </div>
     </div>
-    <div class="ui bottom attached segment">
+    <div id="comment-container" class="ui bottom attached segment">
         <!--留言区域列表-->
         <div class="ui teal segment">
             <div class="ui comments">
@@ -617,6 +616,18 @@ h5,h6{font-size:1em;}
     </div>
 </div>
 </div>
+<div class="m-padded  m-fixed m-right-bottom">
+    <div class="ui vertical icon buttons">
+        <button type="button" class="ui toc teal button">目录</button>
+        <a href="#comment-container" class="ui teal button">留言</a>
+        <button class="ui button"><i class="weixin icon"></i></button>
+        <a href="#" class="ui button"><i class="chevron up icon"></i></a>
+    </div>
+</div>
+
+<div class="ui toc-container flowing popup transition hidden">
+    <ol class="js-toc" style="width: 250px"></ol>
+</div>
 <!--底部footer-->
 <footer class="ui inverted vertical segment">
     <div class="ui center aligned container">
@@ -652,8 +663,21 @@ h5,h6{font-size:1em;}
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
 <script src="../static/lib/prism/prism.js"></script>
+<script src="../static/lib/tocbot/tocbot.min.js"></script>
 
 <script>
+
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.js-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.js-toc-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+
     $('.menu.toggle').click(function () {
         $('.m-item').toggleClass('m-mobile-hide');
     })
@@ -661,6 +685,11 @@ h5,h6{font-size:1em;}
         popup: $('.payQR.popup'),
         on: 'click',
         position: 'bottom center'
+    })
+    $('.toc.button').popup({
+        popup: $('.toc-container.popup'),
+        on: 'click',
+        position: 'left center'
     })
 </script>
 </body>
