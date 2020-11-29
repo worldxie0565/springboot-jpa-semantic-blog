@@ -621,7 +621,7 @@ h5,h6{font-size:1em;}
         <button type="button" class="ui toc teal button">目录</button>
         <a href="#comment-container" class="ui teal button">留言</a>
         <button class="ui wechat button"><i class="weixin icon"></i></button>
-        <a href="#" class="ui button"><i class="chevron up icon"></i></a>
+        <div id="toTop-button" class="ui button"><i class="chevron up icon"></i></div>
     </div>
 </div>
 
@@ -666,6 +666,7 @@ h5,h6{font-size:1em;}
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
+<script src="//cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
 <script src="../static/lib/prism/prism.js"></script>
 <script src="../static/lib/tocbot/tocbot.min.js"></script>
 <script src="../static/lib/qrcode/qrcode.min.js"></script>
@@ -710,6 +711,9 @@ h5,h6{font-size:1em;}
         colorLight : "#ffffff",
         correctLevel : QRCode.CorrectLevel.H
     });
+    $("#toTop-button").click(function () {
+        $(window).scrollTo(0, 500);
+    })
 </script>
 </body>
 </html>
