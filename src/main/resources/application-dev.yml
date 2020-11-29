@@ -1,0 +1,21 @@
+spring:
+  thymeleaf:
+    cache: false
+    mode: HTML
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///blog?serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  level:
+    root: info
+    com.xxy.blog: debug
+  file:
+    name: log/blog-dev.log
