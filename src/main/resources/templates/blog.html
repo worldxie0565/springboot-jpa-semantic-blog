@@ -620,13 +620,17 @@ h5,h6{font-size:1em;}
     <div class="ui vertical icon buttons">
         <button type="button" class="ui toc teal button">目录</button>
         <a href="#comment-container" class="ui teal button">留言</a>
-        <button class="ui button"><i class="weixin icon"></i></button>
+        <button class="ui wechat button"><i class="weixin icon"></i></button>
         <a href="#" class="ui button"><i class="chevron up icon"></i></a>
     </div>
 </div>
 
 <div class="ui toc-container flowing popup transition hidden">
     <ol class="js-toc" style="width: 250px"></ol>
+</div>
+
+<div id="qrcode" class="ui wechat-qr flowing popup transition hidden" style="width: 130px !important;">
+<!--    <img src="../static/images/wechat.jpg" alt="" class="ui rounded image" style="width: 120px !important">-->
 </div>
 <!--底部footer-->
 <footer class="ui inverted vertical segment">
@@ -664,6 +668,7 @@ h5,h6{font-size:1em;}
 <script src="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
 <script src="../static/lib/prism/prism.js"></script>
 <script src="../static/lib/tocbot/tocbot.min.js"></script>
+<script src="../static/lib/qrcode/qrcode.min.js"></script>
 
 <script>
 
@@ -691,6 +696,20 @@ h5,h6{font-size:1em;}
         on: 'click',
         position: 'left center'
     })
+
+    $('.wechat').popup({
+        popup: $('.wechat-qr'),
+        on: 'hover',
+        position: 'left center'
+    })
+    var qrcode = new QRCode("qrcode", {
+        text: "https://www.baidu.com",
+        width: 110,
+        height: 110,
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel.H
+    });
 </script>
 </body>
 </html>
