@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="_fragments::head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>首页</title>
+    <title>博客</title>
     <link rel="stylesheet" href="../static/css/me.css">
     <link href="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.css" rel="stylesheet">
 </head>
-<body style="background: url('../static/images/bg.png')">
+<body style="background: url('/images/bg.png')">
 <!--导航-->
-<nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+<nav th:replace="_fragments::menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
     <div class="ui container">
         <div class="ui inverted secondary stackable menu">
             <h2 class="ui teal header item">Blog</h2>
@@ -418,18 +418,18 @@
                 <!--二维码-->
                 <h4 class="ui horizontal divider header m-margin-top-large">扫码关注我</h4>
                 <div class="ui centered card" style="width: 11em">
-                    <img src="../static/images/wechat.jpg" alt="" class="ui rounded image">
+                    <img src="../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" alt="" class="ui rounded image">
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!--底部footer-->
-<footer class="ui inverted vertical segment">
+<footer th:replace="_fragments::footer" class="ui inverted vertical segment">
     <div class="ui center aligned container">
         <div class="ui divided stackable grid">
             <div class="three wide column">
-                <img src="../static/images/wechat.jpg" class="ui rounded centered image" alt="" style="width: 100px">
+                <img src="../static/images/wechat.jpg" th:src="@{/images/wechat.jpg}" class="ui rounded centered image" alt="" style="width: 100px">
             </div>
             <div class="three wide column">
                 <h4 class="ui inverted header m-text-thin m-text-spaced">最新博客</h4>
@@ -455,8 +455,11 @@
         <p class="m-text-thin m-opacity-tiny m-text-spaced">Copyright &copy; 2016 - 2017 Xiaoyong Designed by xiaoyong.xie</p>
     </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
+<!--/*/<th:block th:replace="_fragments::script">/*/-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/semantic-ui/2.4.1/semantic.js"></script>
+<!--/*/</th:block>/*/-->
+
 
 <script>
     $('.menu.toggle').click(function () {
