@@ -38,8 +38,8 @@
 <div class="ui attached pointing menu">
     <div class="ui container  ">
         <div class="right menu">
-            <a href="#" class="item">发布</a>
-            <a href="#" class="teal active item">列表</a>
+            <a href="#" th:href="@{/admin/blogs/input}" class="teal  item">发布</a>
+            <a href="#" th:href="@{/admin/blogs}" class=" teal active item">列表</a>
         </div>
     </div>
 </div>
@@ -89,6 +89,7 @@
                     <th></th>
                     <th>标题</th>
                     <th>类型</th>
+                    <th>状态</th>
                     <th>推荐</th>
                     <th>更新时间</th>
                     <th>操作</th>
@@ -99,6 +100,7 @@
                     <td th:text="${iterStat.count}">1</td>
                     <td th:text="${blog.title}">挪威生命力</td>
                     <td th:text="${blog.type.name}">认知升级</td>
+                    <td th:text="${blog.published} ? '发布':'草稿'">草稿</td>
                     <td th:text="${blog.recommend} ? '是' : '否'">是</td>
                     <td th:text="${blog.updateTime}">2020-09-20 17:20</td>
                     <td>
@@ -111,7 +113,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <th colspan="6">
+                    <th colspan="7">
                         <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
                             <a onclick="page(this)" th:attr="data-page=${page.number}-1" th:unless="${page.first}"
                                class="item">
