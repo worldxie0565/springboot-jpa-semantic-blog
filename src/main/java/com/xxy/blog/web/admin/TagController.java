@@ -1,4 +1,4 @@
-package com.xxy.blog.web;
+package com.xxy.blog.web.admin;
 
 import com.xxy.blog.po.Tag;
 import com.xxy.blog.service.TagService;

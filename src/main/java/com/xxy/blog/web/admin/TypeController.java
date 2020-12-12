@@ -1,4 +1,4 @@
-package com.xxy.blog.web;
+package com.xxy.blog.web.admin;
 
 import com.xxy.blog.po.Type;
 import com.xxy.blog.service.TypeService;
